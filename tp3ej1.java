@@ -63,3 +63,31 @@ public class tp3ej1 extends JFrame {
 
         add(panel);
     }
+     private void validarLogin() {
+        String email = txtEmail.getText().trim();
+        String password = new String(txtPassword.getPassword());
+
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+            return;
+        }
+
+        if (email.equals("alumno@ulp.edu.ar") && password.equals("12345678")) {
+            JOptionPane.showMessageDialog(this, "Bienvenido " + email);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario y/o contraseña incorrectos");
+        }
+    }
+
+    @SuppressWarnings("Convert2Lambda")
+    public static void main(String[] args) {
+        
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.PLAIN, 14));
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new tp3ej1().setVisible(true);
+            }
+        });
+    }
+}
